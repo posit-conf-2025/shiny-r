@@ -1,4 +1,4 @@
-# Data Dictionary
+# Data
 
 | Parameter      | Description                               |
 |----------------|-------------------------------------------|
@@ -6,10 +6,9 @@
 | `name`         | The station name                          |
 | `country`      | The station country                       |
 | `state`        | The station state                         |
-| `state`        | The station region                        |
 | `longitude`    | The station longitude                     |
 | `latitude`     | The station latitude                      |
-| `date`         | The observation date                      |
+| `date`         | The date                                  |
 | `temp_avg`     | The average air temperature in °C         |
 | `temp_min`     | The minimum air temperature in °C         |
 | `temp_max`     | The maximum air temperature in °C         |
