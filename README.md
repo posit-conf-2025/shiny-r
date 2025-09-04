@@ -1,4 +1,5 @@
-&nbsp;
+Introduction to Shiny for R
+================
 
 ### posit::conf 2025
 
