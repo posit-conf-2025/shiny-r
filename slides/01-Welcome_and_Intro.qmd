@@ -4,7 +4,7 @@ author: "Colin Rundel"
 format: 
   revealjs:
     logo: images/shiny.png
-    footer: "posit::conf 2024 - Introduction to Shiny for R"
+    footer: "posit::conf 2025 - Introduction to Shiny for R"
     slide-number: true
     highlight-style: a11y
     theme: [default, custom.scss]
@@ -12,7 +12,7 @@ format:
 execute:
   echo: true
 title-slide-attributes:
-    data-background-image: "images/Seattle_Skyline.jpg"
+    data-background-image: "images/Atlanta_Skyline.jpg"
     data-background-size: cover
     data-background-opacity: "0.33"
 ---
@@ -35,7 +35,8 @@ library(shiny)
 
 
 ::: {.column width="50%" .center}
-![](images/tas.png){width="75%"}
+FIXME
+![](){width="75%"}
 :::
 :::
 
@@ -51,8 +52,7 @@ library(shiny)
 ::: {.column width='10%'}
 :::
 ::: {.column width='40%'}
-| Jeremy Allen & Joe Cheng
-| Posit
+| FIXME
 :::
 ::::
 
@@ -82,25 +82,17 @@ countdown::countdown(3)
 <br/><br/>
 
 :::: {.larger}
-Website:
+`r bsicons::bs_icon("easel")` &nbsp; &nbsp; [pos.it/shiny-r-intro-24](https://pos.it/shiny-r-25)
 
-::: {style="text-align: center;"}
-[pos.it/shiny-r-intro-24](https://pos.it/shiny-r-intro-24)
-:::
+<br/>
 
-<p/>
-
-GitHub:
-
-::: {style="text-align: center;"}
-[github.com/posit-conf-2024/shiny-r-intro](https://github.com/posit-conf-2024/shiny-r-intro)
-:::
+`r bsicons::bs_icon("github")` &nbsp; &nbsp; [github.com/posit-conf-2024/shiny-r-intro](https://github.com/posit-conf-2025/shiny-r)
 
 ::::
 
 
 ::: aside
-All of the materials for this workshop licensed under a [Creative Commons Attribution Share Alike 4.0 International license](https://github.com/posit-conf-2024/shiny-r-intro/blob/main/LICENSE.md).
+All of the materials for this workshop licensed under a [Creative Commons Attribution Share Alike 4.0 International license](https://github.com/posit-conf-2025/shiny-r/blob/main/LICENSE.md).
 :::
 
 
@@ -119,12 +111,12 @@ All of the materials for this workshop licensed under a [Creative Commons Attrib
 | 15:30 - 17:00 | Theming & Publishing  |
 
 
-Coffee and tea will be available on levels 3, 5, 6 & 7. 
+Coffee and tea will be available on levels FIXME. 
 
-Lunch will be in the Regency Ballroom on level 7
+Lunch will be in the FIXME
 
 
-## WiFi
+## WiFi - FIXME
 
 <br/>
 
@@ -132,21 +124,21 @@ Lunch will be in the Regency Ballroom on level 7
 Username: 
 
 ::: center
-**Posit Conf 2024**
+**Posit Conf 2025**
 :::
 
 
 Password: 
 
 ::: center
-**conf2024**
+**conf2025**
 :::
 
 :::
 
 <br/>
 
-If you have any difficulty with your connection please let us (myself and or the TAs) know so we can escalate issues if needed.
+If you have any difficulty with your connection please let us know so we can escalate the issue(s) if needed.
 
 
 ## Code of Conduct
@@ -161,14 +153,7 @@ Please see the policy linked above for contact information.
 
 ## Other useful info
 
-- There are **gender-neutral bathrooms** located on floors 3, 4, 5, 6, and 7.
-
-- The **meditation and prayer room** is Room 503, it is
-available Mon & Tues 7am - 7pm, and Wed 7am - 5pm.
-
-- The **lactation room** is located in 509, with the same timings as above.
-
-- Participants who do not wish to be photographed have **red lanyards**; please note everyone’s lanyard colors before taking a photo and respect their choices.
+FIXME
 
 
 ## Asking for help (Stickies)
@@ -176,19 +161,19 @@ available Mon & Tues 7am - 7pm, and Wed 7am - 5pm.
 ::: {.r-hstack}
 
 ::: {style="text-align: center;"}
-::: {data-id="box2" style="border: 2px solid; width: 200px; height: 200px; margin: 25px;"}
+::: {data-id="box2" style="border: 2px solid; width: 175px; height: 175px; margin: 25px;"}
 :::
 I'm working
 :::
 
 ::: {style="text-align: center;"}
-::: {data-id="box1" style="background: #CC4341; width: 200px; height: 200px; margin: 25px;"}
+::: {data-id="box1" style="background: #CC4341; width: 175px; height: 175px; margin: 25px;"}
 :::
 I'm stuck
 :::
 
 ::: {style="text-align: center;"}
-::: {data-id="box3" style="background: #A3C586; width: 200px; height: 200px; margin: 25px;"}
+::: {data-id="box3" style="background: #A3C586; width: 175px; height: 175px; margin: 25px;"}
 :::
 I'm done
 :::
@@ -197,7 +182,7 @@ I'm done
 
 ::: {.r-hstack}
 ::: {style="text-align: center;"}
-![](images/hand.png){fig-align="center" width="20%"}
+![](images/hand.png){fig-align="center" height="175px"}
 <br/>I have a general question
 :::
 :::
@@ -224,7 +209,7 @@ This is a great place to ask questions, post resources, memes, or most anything 
 You can use the following link to join the workshops RStudio cloud space,
 
 ::: {.large .center}
-[bit.ly/conf24-shiny-r-intro](https://bit.ly/conf24-shiny-r-intro)
+[bit.ly/conf25-shiny-r](https://bit.ly/conf25-shiny-r)
 :::
 
 <p/>
@@ -248,9 +233,9 @@ which should then create a copy of all materials and launch a cloud session for 
 
 ## Cloud session
 
-If everything is working you should see something very close to the following,
+If everything is working you should see something similar to the following,
 
-![](images/cloud_session.png){fig-align="center" width="100%"}
+![](images/cloud_session.png){fig-align="center" width="400px"}
 
 
 ## File organization
@@ -266,7 +251,7 @@ If everything is working you should see something very close to the following,
 * `exercises/solutions/` - sample solution code for each exercise 
 
 * `exercises/live/` - sample solution code we generate during the workshop, 
-pushed at the end of each session
+updated at the end of each session
 
 * `data/` - example data sets used in demos and exercises
 
@@ -282,6 +267,29 @@ pushed at the end of each session
 
 > Shiny is an R package that makes it easy to build interactive web apps straight from R. You can host standalone apps on a webpage or embed them in R Markdown documents or build dashboards. You can also extend your Shiny apps with CSS themes, htmlwidgets, and JavaScript actions.
 
+
+## bslib
+
+::: center
+![](images/bslib.png){width=25%}
+:::
+
+> The bslib R package provides a modern UI toolkit for Shiny and R Markdown based on Bootstrap. 
+
+
+## Shiny + bslib
+
+```{r}
+#| eval: false
+library(shiny)
+library(bslib)
+```
+
+is now the officially recommended way to build Shiny apps.
+
+We will be using both packages throughout the workshop, I'll try to point out when we are using features specific to one or the other.
+
+One of the easy ways to tell is that `bslib` functions use `snake_case` naming conventions while `shiny` uses `camelCase`.
 
 
 
@@ -328,8 +336,9 @@ Client / Browser
 ```{r shiny-anatomy}
 #| eval: false
 #| echo: true
-#| code-line-numbers: "|1|7|3|5"
+#| code-line-numbers: "|1,2|8|4|6"
 library(shiny)
+library(bslib)
 
 ui = list()
 
@@ -342,7 +351,7 @@ shinyApp(ui = ui, server = server)
 
 We need some data that we will be able to interact with for our Shiny apps today.
 
-I've taken the liberty of collecting and preparing some historical weather data from [Meteostat](https://www.meteostat.net/) for some airports around the US.
+I've provided recent weather data from [Meteostat](https://www.meteostat.net/) for airports around the US.
 
 ```{r}
 #| include: false
@@ -356,7 +365,7 @@ readr::read_csv(here::here("data/weather.csv"))
 
 
 ::: aside
-See [here](https://posit-conf-2024.github.io/shiny-r-intro/data/) for a full data dictionary and [source code](https://github.com/posit-conf-2024/shiny-r-intro/blob/main/data/raw_weather.R) for collecting these data.
+See [here](https://posit-conf-2024.github.io/shiny-r-intro/data/) for a full data dictionary and the [source code](https://github.com/posit-conf-2024/shiny-r-intro/blob/main/data/raw_weather.R) for collecting these data.
 :::
 
 
@@ -368,7 +377,7 @@ See [here](https://posit-conf-2024.github.io/shiny-r-intro/data/) for a full dat
 :::
 ```{r}
 #| eval: false
-#| code-line-numbers: "|6-26|10-20|23|28-36|38"
+#| code-line-numbers: "|6-23|10-20|22|25-32|34"
 #| file: "../demos/demo01.R"
 ```
 
@@ -377,11 +386,16 @@ See [here](https://posit-conf-2024.github.io/shiny-r-intro/data/) for a full dat
 
 Open `exercises/ex01.R` in Posit cloud and execute it via the Run App button in RStudio.
 
-Check that you are able successfully run the shiny app and are able to interact with it by picking a new airport. 
+Check that you are able successfully run the Shiny app and are able to interact with it by picking a new airport. 
 
 * If everything is working try modifying the code, e.g. try adding or removing a city from `radioButtons()`.
 
-* What happens if you add a city that is not in the `weather.csv` data set to the radio button input?
+* What happens if you add a city that is not in the `weather.csv` dataset to the radio button input?
+
+
+::: {.aside}
+You can use `unique(d$name)` to see the list of available airports in the data.
+:::
 
 ```{r}
 #| echo: false
@@ -395,67 +409,52 @@ A couple of quick tips:
 
 - If the app can't find the data, make sure you have opened the workshop's RStudio project
 
-- If you are not using Posit cloud make sure you have the latest versions of `shiny` and `tidyverse` installed
+- If you are not using Posit cloud make sure you have the latest versions of `shiny`, `bslib`, and `tidyverse` installed
 
 - If you are stuck, ask a neighbor for help and/or raise your hand and myself or a TA will come by
 
 
 # UIs
 
-## Sidebar layout
+## Layouts
 
-<br/>
+Shiny uses page layout functions as a way to specify the general organization of the UI of an app.
 
-![](images/layout-sidebar.png){fig-align="center" width="60%"}
+Our first app used a sidebar layout created with `page_sidebar()`. This layout consists of:
+
+* a `title`,
+
+* a `sidebar` (which usually holds inputs or extra information),
+
+* and then a collection of other Shiny UI elements which form the body of the app (a plot in our case).
+
+This sidebar layout is a good place to start for most simple apps, but there are many other layouts that can be used to create more complex and interesting apps.
+
+## Shiny vs bslib layouts
+
+Since `page_sidebar()` uses snake_case we can infer it is from `bslib`. If you've seen older Shiny code you may have seen `fluidPage()` + `sidebarLayout()` which come from `shiny`.
+
+There are direct analogues of almost all Shiny page layouts in bslib, either choice is viable and will let you create a working Shiny app.
+
+We have opted to use the bslib layouts because they are more modern and typically have a more user friendly syntax.
 
 ::: aside
-From [Mastering Shiny](https://mastering-shiny.org/action-layout.html#page-with-sidebar)
+When googling or using an llm you are likely to find examples using both layout styles so it is good to be familiar with both.
 :::
+
 
 ## UI functions are HTML
 
-One of the neat tricks of Shiny is that the interface is just a web page, and this can be seen by the fact that UI functions are just R functions that generate HTML. 
+One of the neat tricks of Shiny is that the interface is just a webpage, and this can be seen by the fact that UI functions are just R functions that generate HTML. 
 
 We can run any of the following in our console and see the HTML output generated:
 
 ```{r eval=FALSE}
-fluidPage()
-sidebarLayout(sidebarPanel(),mainPanel())
-radioButtons("test", "Test", choices = c("A","B","C"))
+actionButton("id", "Click me!")
+selectInput("test", "Test", choices = c("A", "B", "C"), selectize = FALSE)
+img(src = "shiny.png")
 ```
 
-## Multi-row layout
-
-<br/>
-
-![](images/layout-fluidrow.png){fig-align="center" width="60%"}
-
-::: aside
-From [Mastering Shiny](https://mastering-shiny.org/action-layout.html#multi-row)
-:::
-
-## Other layouts
-
--   Tabsets 
-    
-    - See `tabsetPanel()`
-
--   Navbars and navlists
-
-    -   See `navlistPanel()`
-    
-    -   and `navbarPage()`
-
-- Dashboards
-    
-    - [flexdashboard](https://pkgs.rstudio.com/flexdashboard/)
-    
-    - [Shinydashboard](https://rstudio.github.io/shinydashboard/)
-    
-    - [Quarto Dashboards](https://quarto.org/docs/dashboards/)
-    
-    - [bslib](https://rstudio.github.io/bslib/)
-    
 
 # Input Widgets
 
@@ -484,14 +483,15 @@ From [Mastering Shiny](https://mastering-shiny.org/action-layout.html#multi-row)
 
 ## Your turn - Exercise 02
 
-We've just seen a number of alternative input widgets, starting from the code in `exercises/ex02.R` try changing the `radioButton()` input to something else.
+We've just seen a number of alternative input widgets, starting from the code in `exercises/ex02.R` try changing the `radioButton()` input to one of the following:
 
-What happens if you use an input capable of selecting multiple values, e.g.
+* `selectInput()` with `multiple = FALSE`
+
+* `selectInput()` with `multiple = TRUE`
 
 * `checkboxGroupInput()` 
 
-* or `selectInput()` with `multiple = TRUE`
-
+What happens? Does the app still work as expected?
 
 ```{r}
 #| echo: false
