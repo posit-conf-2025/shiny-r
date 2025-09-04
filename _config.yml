@@ -1,0 +1,11 @@
+title: Introduction to Shiny for R
+theme: minima
+plugins:
+  - jemoji
+exclude:
+- slides/01-Welcome_and_Intro.qmd
+- slides/02-Reactivity.qmd
+- slides/03-Dynamic_UIs.qmd
+- slides/04-theming_publishing.qmd
+- slides/images/mermaid.md
+

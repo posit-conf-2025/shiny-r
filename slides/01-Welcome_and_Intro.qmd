@@ -1,0 +1,501 @@
+---
+title: "Welcome &<br/>Introduction to Shiny"
+author: "Colin Rundel"
+format: 
+  revealjs:
+    logo: images/shiny.png
+    footer: "posit::conf 2024 - Introduction to Shiny for R"
+    slide-number: true
+    highlight-style: a11y
+    theme: [default, custom.scss]
+    self-contained: true
+execute:
+  echo: true
+title-slide-attributes:
+    data-background-image: "images/Seattle_Skyline.jpg"
+    data-background-size: cover
+    data-background-opacity: "0.33"
+---
+
+```{r setup}
+#| include: false
+library(shiny)
+```
+
+# Welcome
+
+## Introductions
+
+::: columns
+::: {.column width="50%" .center}
+<br/>
+<br/>
+![](images/colin-rundel.png){width="50%"}
+:::
+
+
+::: {.column width="50%" .center}
+![](images/tas.png){width="75%"}
+:::
+:::
+
+
+:::: {.columns}
+::: {.column width='10%'}
+:::
+::: {.column width='40%'}
+| Colin Rundel
+| Duke University
+:::
+
+::: {.column width='10%'}
+:::
+::: {.column width='40%'}
+| Jeremy Allen & Joe Cheng
+| Posit
+:::
+::::
+
+
+
+## Introduce yourself
+
+We wont go around the room, but take the next couple of minutes to introduce yourself to your neighbors.
+
+Some suggested topics:
+
+* What is your name
+
+* Where you are coming from
+
+* Why you are interested in learning Shiny
+
+
+```{r}
+#| echo: false
+countdown::countdown(3)
+```
+
+
+## Materials
+
+<br/><br/>
+
+:::: {.larger}
+Website:
+
+::: {style="text-align: center;"}
+[pos.it/shiny-r-intro-24](https://pos.it/shiny-r-intro-24)
+:::
+
+<p/>
+
+GitHub:
+
+::: {style="text-align: center;"}
+[github.com/posit-conf-2024/shiny-r-intro](https://github.com/posit-conf-2024/shiny-r-intro)
+:::
+
+::::
+
+
+::: aside
+All of the materials for this workshop licensed under a [Creative Commons Attribution Share Alike 4.0 International license](https://github.com/posit-conf-2024/shiny-r-intro/blob/main/LICENSE.md).
+:::
+
+
+
+## Schedule
+
+
+| Time          | Activity              |
+| :------------ | :-------------------- |
+| 09:00 - 10:30 | Welcome & Intro       |
+| 10:30 - 11:00 | *Coffee break*        |
+| 11:00 - 12:30 | Reactivity            |
+| 12:30 - 13:30 | *Lunch break*         |
+| 13:30 - 15:00 | Dynamic UIs           |
+| 15:00 - 15:30 | *Coffee break*        |
+| 15:30 - 17:00 | Theming & Publishing  |
+
+
+Coffee and tea will be available on levels 3, 5, 6 & 7. 
+
+Lunch will be in the Regency Ballroom on level 7
+
+
+## WiFi
+
+<br/>
+
+::: larger
+Username: 
+
+::: center
+**Posit Conf 2024**
+:::
+
+
+Password: 
+
+::: center
+**conf2024**
+:::
+
+:::
+
+<br/>
+
+If you have any difficulty with your connection please let us (myself and or the TAs) know so we can escalate issues if needed.
+
+
+## Code of Conduct
+
+The Code of Conduct can be found at [posit.co/code-of-conduct](https://posit.co/code-of-conduct).
+
+Please review it carefully.
+
+You can report Code of Conduct violations in person, by email, or by phone.
+
+Please see the policy linked above for contact information.
+
+## Other useful info
+
+- There are **gender-neutral bathrooms** located on floors 3, 4, 5, 6, and 7.
+
+- The **meditation and prayer room** is Room 503, it is
+available Mon & Tues 7am - 7pm, and Wed 7am - 5pm.
+
+- The **lactation room** is located in 509, with the same timings as above.
+
+- Participants who do not wish to be photographed have **red lanyards**; please note everyone’s lanyard colors before taking a photo and respect their choices.
+
+
+## Asking for help (Stickies)
+
+::: {.r-hstack}
+
+::: {style="text-align: center;"}
+::: {data-id="box2" style="border: 2px solid; width: 200px; height: 200px; margin: 25px;"}
+:::
+I'm working
+:::
+
+::: {style="text-align: center;"}
+::: {data-id="box1" style="background: #CC4341; width: 200px; height: 200px; margin: 25px;"}
+:::
+I'm stuck
+:::
+
+::: {style="text-align: center;"}
+::: {data-id="box3" style="background: #A3C586; width: 200px; height: 200px; margin: 25px;"}
+:::
+I'm done
+:::
+
+:::
+
+::: {.r-hstack}
+::: {style="text-align: center;"}
+![](images/hand.png){fig-align="center" width="20%"}
+<br/>I have a general question
+:::
+:::
+
+
+## Other communication (Discord)
+
+You should have received an email with an invitation and instructions for joining the conference's discord server.
+
+This workshop has a private channel under Workshops,
+
+::: {.large style="text-align: center"}
+#workshop-shiny-r-intro
+:::
+
+This is a great place to ask questions, post resources, memes, or most anything else before, during, and after the workshop.
+
+
+
+# Computational Environment
+
+## RStudio Cloud
+
+You can use the following link to join the workshops RStudio cloud space,
+
+::: {.large .center}
+[bit.ly/conf24-shiny-r-intro](https://bit.ly/conf24-shiny-r-intro)
+:::
+
+<p/>
+<p/>
+
+Once you have joined you can then select the `get-started-shiny` assignment, 
+
+:::: {.columns}
+::: {.column width='10%'}
+
+:::
+
+::: {.column width='80%' .center}
+![](images/cloud_assignment.png)
+:::
+::::
+
+
+which should then create a copy of all materials and launch a cloud session for you.
+
+
+## Cloud session
+
+If everything is working you should see something very close to the following,
+
+![](images/cloud_session.png){fig-align="center" width="100%"}
+
+
+## File organization
+
+::: {.extra-padding}
+
+* `slides/` - all slides and related materials
+
+* `demos/` - sample code for each demo
+
+* `exercises/` -  starter code for each exercise
+
+* `exercises/solutions/` - sample solution code for each exercise 
+
+* `exercises/live/` - sample solution code we generate during the workshop, 
+pushed at the end of each session
+
+* `data/` - example data sets used in demos and exercises
+
+:::
+
+# Introducing Shiny
+
+## Shiny
+
+::: center
+![](images/shiny.png){width=25%}
+:::
+
+> Shiny is an R package that makes it easy to build interactive web apps straight from R. You can host standalone apps on a webpage or embed them in R Markdown documents or build dashboards. You can also extend your Shiny apps with CSS themes, htmlwidgets, and JavaScript actions.
+
+
+
+
+## App Anatomy
+
+<br/>
+
+::: columns
+::: {.column width="40%" .large}
+Server
+
+::: {style="border: 2px solid; border-radius: 5px; text-align:center; font-size: 90px; height: 250px"}
+`r fontawesome::fa("r-project")` + `r fontawesome::fa("server")`
+:::
+:::
+
+::: {.column width="20%"}
+::: {style="text-align: center; font-size: 90px; padding-top: 20px"}
+<br/>⇄
+:::
+:::
+
+
+::: {.column width="40%" .large}
+Client / Browser
+
+::: {style="border: 2px solid; border-radius: 5px; text-align: center; height: 250px"}
+::: {style="font-size: 90px"}
+`r fontawesome::fa("file-code")`
+:::
+
+::: {style="font-size: 50px"}
+`r fontawesome::fa("html5")` + `r fontawesome::fa("js")` + `r fontawesome::fa("css3")`
+:::
+:::
+
+:::
+
+:::
+
+
+## App Components
+
+```{r shiny-anatomy}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|1|7|3|5"
+library(shiny)
+
+ui = list()
+
+server = function(input, output, session) {}
+
+shinyApp(ui = ui, server = server)
+```
+
+## Weather data
+
+We need some data that we will be able to interact with for our Shiny apps today.
+
+I've taken the liberty of collecting and preparing some historical weather data from [Meteostat](https://www.meteostat.net/) for some airports around the US.
+
+```{r}
+#| include: false
+options(pillar.print_min = 7, pillar.print_max = 7)
+```
+
+```{r}
+#| message: false
+readr::read_csv(here::here("data/weather.csv"))
+```
+
+
+::: aside
+See [here](https://posit-conf-2024.github.io/shiny-r-intro/data/) for a full data dictionary and [source code](https://github.com/posit-conf-2024/shiny-r-intro/blob/main/data/raw_weather.R) for collecting these data.
+:::
+
+
+
+## Demo 01 - Our first app
+
+::: {.code-file .sourceCode .cell-code}
+`r fontawesome::fa("file")` `demos/demo01.R`
+:::
+```{r}
+#| eval: false
+#| code-line-numbers: "|6-26|10-20|23|28-36|38"
+#| file: "../demos/demo01.R"
+```
+
+
+## Your turn - Exercise 01
+
+Open `exercises/ex01.R` in Posit cloud and execute it via the Run App button in RStudio.
+
+Check that you are able successfully run the shiny app and are able to interact with it by picking a new airport. 
+
+* If everything is working try modifying the code, e.g. try adding or removing a city from `radioButtons()`.
+
+* What happens if you add a city that is not in the `weather.csv` data set to the radio button input?
+
+```{r}
+#| echo: false
+countdown::countdown(5)
+```
+
+
+## Troubleshooting
+
+A couple of quick tips:
+
+- If the app can't find the data, make sure you have opened the workshop's RStudio project
+
+- If you are not using Posit cloud make sure you have the latest versions of `shiny` and `tidyverse` installed
+
+- If you are stuck, ask a neighbor for help and/or raise your hand and myself or a TA will come by
+
+
+# UIs
+
+## Sidebar layout
+
+<br/>
+
+![](images/layout-sidebar.png){fig-align="center" width="60%"}
+
+::: aside
+From [Mastering Shiny](https://mastering-shiny.org/action-layout.html#page-with-sidebar)
+:::
+
+## UI functions are HTML
+
+One of the neat tricks of Shiny is that the interface is just a web page, and this can be seen by the fact that UI functions are just R functions that generate HTML. 
+
+We can run any of the following in our console and see the HTML output generated:
+
+```{r eval=FALSE}
+fluidPage()
+sidebarLayout(sidebarPanel(),mainPanel())
+radioButtons("test", "Test", choices = c("A","B","C"))
+```
+
+## Multi-row layout
+
+<br/>
+
+![](images/layout-fluidrow.png){fig-align="center" width="60%"}
+
+::: aside
+From [Mastering Shiny](https://mastering-shiny.org/action-layout.html#multi-row)
+:::
+
+## Other layouts
+
+-   Tabsets 
+    
+    - See `tabsetPanel()`
+
+-   Navbars and navlists
+
+    -   See `navlistPanel()`
+    
+    -   and `navbarPage()`
+
+- Dashboards
+    
+    - [flexdashboard](https://pkgs.rstudio.com/flexdashboard/)
+    
+    - [Shinydashboard](https://rstudio.github.io/shinydashboard/)
+    
+    - [Quarto Dashboards](https://quarto.org/docs/dashboards/)
+    
+    - [bslib](https://rstudio.github.io/bslib/)
+    
+
+# Input Widgets
+
+## Shiny Widgets Gallery
+
+::: {style="text-align: center"}
+<https://shiny.posit.co/r/gallery/widgets/widget-gallery/>
+:::
+
+<iframe data-src="https://gallery.shinyapps.io/081-widgets-gallery/" width="100%" height="500px" style="border:1px solid;border-radius: 5px;" data-external="1">
+
+</iframe>
+
+
+## A brief widget tour
+
+::: {style="text-align: center"}
+[rundel.shinyapps.io/widgets/](https://rundel.shinyapps.io/widgets/)
+:::
+
+
+<iframe data-src="https://rundel.shinyapps.io/widgets/" width="100%" height="500px" style="border:1px solid;border-radius: 5px;" data-external="1">
+
+</iframe>
+
+
+## Your turn - Exercise 02
+
+We've just seen a number of alternative input widgets, starting from the code in `exercises/ex02.R` try changing the `radioButton()` input to something else.
+
+What happens if you use an input capable of selecting multiple values, e.g.
+
+* `checkboxGroupInput()` 
+
+* or `selectInput()` with `multiple = TRUE`
+
+
+```{r}
+#| echo: false
+countdown::countdown(10)
+```
+
+
