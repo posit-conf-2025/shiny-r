@@ -4,7 +4,7 @@ author: "Colin Rundel"
 format: 
   revealjs:
     logo: images/shiny.png
-    footer: "posit::conf 2024 - Introduction to Shiny for R"
+    footer: "posit::conf 2025 - Introduction to Shiny for R"
     slide-number: true
     highlight-style: a11y
     theme: [default, custom.scss]

@@ -86,7 +86,7 @@ countdown::countdown(3)
 
 <br/>
 
-`r bsicons::bs_icon("github")` &nbsp; &nbsp; [github.com/posit-conf-2024/shiny-r-intro](https://github.com/posit-conf-2025/shiny-r)
+`r bsicons::bs_icon("github")` &nbsp; &nbsp; [github.com/posit-conf-2025/shiny-r-intro](https://github.com/posit-conf-2025/shiny-r)
 
 ::::
 
@@ -365,7 +365,7 @@ readr::read_csv(here::here("data/weather.csv"))
 
 
 ::: aside
-See [here](https://posit-conf-2024.github.io/shiny-r-intro/data/) for a full data dictionary and the [source code](https://github.com/posit-conf-2024/shiny-r-intro/blob/main/data/raw_weather.R) for collecting these data.
+See [here](https://posit-conf-2025.github.io/shiny-r-intro/data/) for a full data dictionary and the [source code](https://github.com/posit-conf-2025/shiny-r-intro/blob/main/data/raw_weather.R) for collecting these data.
 :::
 
 
