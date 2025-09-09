@@ -10,7 +10,6 @@ d_vars = c(
   "Wind speed"   = "wind_speed", "Air pressure"   = "air_press"
 )
 
-
 ui = page_sidebar(
   title = "Weather Forecasts",
   sidebar = sidebar(

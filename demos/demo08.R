@@ -4,15 +4,12 @@ library(bslib)
 
 d = readr::read_csv(here::here("data/weather.csv"))
 
-d_vars = c("Average temp" = "temp_avg",
-           "Min temp" = "temp_min",
-           "Max temp" = "temp_max",
-           "Total precip" = "precip",
-           "Snow depth" = "snow",
-           "Wind direction" = "wind_direction",
-           "Wind speed" = "wind_speed",
-           "Air pressure" = "air_press",
-           "Total sunshine" = "total_sun")
+d_vars = c(
+  "Average temp" = "temp_avg",   "Min temp"       = "temp_min",
+  "Max temp"     = "temp_max",   "Total precip"   = "precip",
+  "Snow depth"   = "snow",       "Wind direction" = "wind_direction",
+  "Wind speed"   = "wind_speed", "Air pressure"   = "air_press"
+)
 
 ui = page_sidebar(
   title = "Weather Data",
@@ -36,9 +33,9 @@ ui = page_sidebar(
     card_body(
       plotOutput("plot")
     )
-  )
+  ),
+  uiOutput("valueboxes")
 )
-
 
 server = function(input, output, session) {
   observe({
@@ -48,6 +45,33 @@ server = function(input, output, session) {
         distinct(region, name) |>
         filter(region == input$region) |>
         pull(name)
+    )
+  })
+  
+  output$valueboxes = renderUI({
+    clean = function(x) {
+      round(x,1) |> paste("°C")
+    }
+    
+    layout_columns(
+      value_box(
+        title = "Average Temp",
+        value = mean(d_city()$temp_avg, na.rm=TRUE) |> clean(),
+        showcase = bsicons::bs_icon("thermometer-half"),
+        theme = "success"
+      ),
+      value_box(
+        title = "Minimum Temp",
+        value = min(d_city()$temp_min, na.rm=TRUE) |> clean(),
+        showcase = bsicons::bs_icon("thermometer-snow"),
+        theme = "primary"
+      ),
+      value_box(
+        title = "Maximum Temp",
+        value = max(d_city()$temp_max, na.rm=TRUE) |> clean(),
+        showcase = bsicons::bs_icon("thermometer-sun"),
+        theme = "danger"
+      )
     )
   })
   

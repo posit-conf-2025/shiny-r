@@ -1,10 +1,10 @@
 ---
-title: "Dynamic UIs"
+title: "Dynamic & Modern UIs"
 author: "Colin Rundel"
 format: 
   revealjs:
     logo: images/shiny.png
-    footer: "posit::conf 2024 - Introduction to Shiny for R"
+    footer: "posit::conf 2025 - Introduction to Shiny for R"
     slide-number: true
     highlight-style: a11y
     theme: [default, custom.scss]
@@ -12,7 +12,7 @@ format:
 execute:
   echo: true
 title-slide-attributes:
-    data-background-image: "images/Seattle_Skyline.jpg"
+    data-background-image: "images/Atlanta_Skyline.jpg"
     data-background-size: cover
     data-background-opacity: "0.33"
 ---
@@ -52,41 +52,46 @@ library(bsicons)
 ```
 
 
-# Downloading
+# Downloading from Shiny
 
 ## `downloadButton()`
 
-This is a special UI input widget designed to launch a download window from your Shiny app. 
+is a special UI input widget designed to launch a download window from your Shiny app. 
 
 `downloadButton()` is a special case of an `actionButton()` with specialized server syntax. These are different from the other inputs we've used this far as they are primarily used to trigger an action rather than return a value.
 
-Rahter than using an `observe()` or `render*()`, this widgte is paired with the special `downloadHandler()` which uses the latter's syntax in our server function.
+Rather than using an `observe()` or `render*()`, this widget is paired with the special `downloadHandler()` function which uses the latter's syntax in our server function.
 
 
 
 ## `downloadHandler()`
 
-Specifically, within our server definition we attach the `downloadHandler()` to the button's id via `output`, e.g.
+Specifically, within our server definition we attach the `downloadHandler()` to the `downloadButton`'s id via `output`, e.g.
+
 ```r
 output$download_btn = downloadHandler(...)
 ```
 
-The handler then defines a `filename` function for generating a default filename and a `content` function for writing the download file's content to a temporary file, which is then served by Shiny for downloading by the user.
+The handler then defines:
+
+* a `filename` function for generating a default filename and
+
+*  a `content` function for writing the download file's content to a temporary file
 
 
-## Demo 06 - A download button
+## Demo 05 - A download button
 
 ::: {.code-file .sourceCode .cell-code}
-`r fontawesome::fa("file")` `demos/demo06.R`
+`r fontawesome::fa("file")` `demos/demo05.R`
 :::
 ```{r}
 #| eval: false
-#| code-line-numbers: "|32|42-52|43-50|51-53"
-#| file: ../demos/demo06.R
+#| code-line-numbers: "|30|36-46|37-42|43-45"
+#| file: ../demos/demo05.R
 ```
 
 
-## `bindEvent()`
+## Controlling the reactive graph
 
 For both observers and reactive expressions Shiny will automatically determine reactive dependencies for you - in some cases this is not what we want.
 
@@ -95,7 +100,7 @@ To explicitly control the dependencies of reactive expressions, render functions
 Similar effects can be achieved via `observeEvent()` / `eventReactive()` but these have been soft deprecated as of Shiny 1.6.
 
 ::: aside
-*Note* - when binding a reactive you must use the functional form, i.e. `react()` and not `react`
+*Note* - when binding a reactive we use the functional form, i.e. `obj()` and not `obj`
 :::
 
 
@@ -108,23 +113,23 @@ The modal dialog consists of a number of Shiny UI elements (static or dynamic) a
 They differ from other UI elements we've seen so far as they are usually defined within the app's server function and not the ui.
 
 
-## Demo 07 - A fancy download button
+## Demo 06 - A fancier download experience
 
 ::: {.code-file .sourceCode .cell-code}
-`r fontawesome::fa("file")` `demos/demo07.R`
+`r fontawesome::fa("file")` `demos/demo06.R`
 :::
 ```{r}
 #| eval: false
-#| code-line-numbers: "|32|42-59|44|45-52|53-56|59|61-78|72-74"
-#| file: ../demos/demo07.R
+#| code-line-numbers: "|30|37-54|37,53,54|38,52|39-51|49,56-71|63-70"
+#| file: ../demos/demo06.R
 ```
 
 
-# Uploading
+# Uploading to Shiny
 
 ## `fileInput()` widget
 
-This widget behaves a bit differently than the others we have seen - before the file is uploaded, the input will return `NULL`. After file(s) are uploaded the input returns a data frame with one row per file and the following columns:
+This widget behaves a bit differently than the others we have seen - like the other widgets it returns a value via `input$<id>` but the value returned changes based on whether or not a file has been uploaded. Specifically, before the file is uploaded, the input will return `NULL`. After file(s) are uploaded the input returns a data frame with one row per file and the following columns:
 
 * `name` - the original filename (from the client's system)
 
@@ -134,29 +139,23 @@ This widget behaves a bit differently than the others we have seen - before the 
 
 * `datapath` - location of the *temporary* file on the server
 
-Given this data frame, your app's server code is responsible for the processing and reading in the uploaded file(s).
+Your app is then responsible for reading in and processing the uploaded file(s) as needed.
 
 ## Using `fileInput()`
 
 ```{r}
 #| eval: false
-#| code-line-numbers: "|8|12,20-23|14,25-34"
+#| code-line-numbers: "|6|8,14-17|10,19-28"
 library(tidyverse)
 library(shiny)
+library(bslib)
 
-ui = fluidPage(
-  titlePanel("File Upload"),
-  sidebarLayout(
-    sidebarPanel(
-      fileInput("upload", "Upload a file", accept = ".csv")
-    ),
-    mainPanel( 
-      h3("Result"),
-      tableOutput("result"),
-      h3("Content:"),
-      tableOutput("data")
-    )
-  )
+ui = page_fluid(
+  fileInput("upload", "Upload a file", accept = ".csv"),
+  h3("Result"),
+  tableOutput("result"),
+  h3("Content:"),
+  tableOutput("data")
 )
 
 server = function(input, output, session) {
@@ -188,7 +187,7 @@ shinyApp(ui = ui, server = server)
 
 ::: {.extra-padding}
 
-* `input$upload` will default to `NULL` when the app is loaded, using `req(input$upload)` for downstream consumers is a good idea
+* `input$upload` will default to `NULL` when the app is loaded, using `req(input$upload)` for downstream consumers prevents errors/warnings until a file is uploaded
 
 * Files in `datapath` are temporary and should be treated as ephemeral 
 
@@ -339,15 +338,15 @@ value_box(
 ```
 
 
-## Demo 08 - Shiny + bslib
+## Demo 07 - Shiny + Cards
 
 ::: {.code-file .sourceCode .cell-code}
-`r fontawesome::fa("file")` `demos/demo08.R`
+`r fontawesome::fa("file")` `demos/demo07.R`
 :::
 ```{r}
 #| eval: false
 #| code-line-numbers: "|17-40|17,19|32-39|54-56"
-#| file: ../demos/demo08.R
+#| file: ../demos/demo07.R
 ```
 
 
@@ -357,7 +356,7 @@ value_box(
 
 Previously we had included a table that showed minimum and maximum temperatures - lets try presenting these using value boxes instead.
 
-Before we get to the code lets think a little bit about how we might do this.
+Before we get to the code lets think a little bit about how we might do this:
 
 . . .
 
@@ -373,11 +372,14 @@ value_box(
 
 . . .
 
-<br/>
-
 ::: center
 Any one see a potential issue with this?
 :::
+
+. . .
+
+Each value box shows a dynamic value that is calculated from the data - so we need a `textOutput()` and corresponding `renderText()` for each value box, and even more if we want to change the color or icon based on the value.
+
 
 
 ## `uiOutput()` and `renderUI()`
@@ -389,25 +391,25 @@ For our case we can create all of the value boxes we need in a single `renderUI(
 Additionally, since `renderUI()` is a reactive context we can perform all of our calculations in the same place .
 
 
-## Demo 09 - Value boxes
+## Demo 08 - Value boxes
+
+::: {.code-file .sourceCode .cell-code}
+`r fontawesome::fa("file")` `demos/demo08.R`
+:::
+```{r}
+#| eval: false
+#| code-line-numbers: "|37|51-76|56,75|57-62|63-68|69-74"
+#| file: ../demos/demo08.R
+```
+
+
+## Demo 09 - Some bslib Bells and Whistles 
 
 ::: {.code-file .sourceCode .cell-code}
 `r fontawesome::fa("file")` `demos/demo09.R`
 :::
 ```{r}
 #| eval: false
-#| code-line-numbers: "|40|54-79|59,78|60-65"
+#| code-line-numbers: "|29-35|36|26,41,42"
 #| file: ../demos/demo09.R
-```
-
-
-## Demo 10 - bslib Bells and Whistles 
-
-::: {.code-file .sourceCode .cell-code}
-`r fontawesome::fa("file")` `demos/demo10.R`
-:::
-```{r}
-#| eval: false
-#| code-line-numbers: "|31-37|38|43"
-#| file: ../demos/demo10.R
 ```
