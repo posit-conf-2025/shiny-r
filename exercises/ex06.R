@@ -4,16 +4,12 @@ library(bslib)
 
 d = readr::read_csv(here::here("data/weather.csv"))
 
-d_vars = c("Average temp" = "temp_avg",
-           "Min temp" = "temp_min",
-           "Max temp" = "temp_max",
-           "Total precip" = "precip",
-           "Snow depth" = "snow",
-           "Wind direction" = "wind_direction",
-           "Wind speed" = "wind_speed",
-           "Air pressure" = "air_press")
-
-thematic::thematic_shiny(bg = "auto", fg = "auto", font = "auto")
+d_vars = c(
+  "Average temp" = "temp_avg",   "Min temp"       = "temp_min",
+  "Max temp"     = "temp_max",   "Total precip"   = "precip",
+  "Snow depth"   = "snow",       "Wind direction" = "wind_direction",
+  "Wind speed"   = "wind_speed", "Air pressure"   = "air_press"
+)
 
 ui = page_sidebar(
   theme = bs_theme(),
@@ -25,24 +21,19 @@ ui = page_sidebar(
     ),
     selectInput(
       "name", "Select an airport", choices = c()
+    ),
+    selectInput(
+      "var", "Select a variable",
+      choices = d_vars, selected = "temp_avg"
     )
   ),
   card(
     card_header(
-      textOutput("title"),
-      popover(
-        bsicons::bs_icon("gear", title = "Settings"),
-        selectInput(
-          "var", "Select a variable",
-          choices = d_vars, selected = "temp_avg"
-        )
-      ),
-      class = "d-flex justify-content-between align-items-center"
+      textOutput("title")
     ),
     card_body(
       plotOutput("plot")
-    ),
-    full_screen = TRUE
+    )
   ),
   uiOutput("valueboxes")
 )
@@ -104,5 +95,7 @@ server = function(input, output, session) {
       theme_minimal()
   })
 }
+
+thematic::thematic_shiny()
 
 shinyApp(ui = ui, server = server)

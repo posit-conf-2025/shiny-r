@@ -4,14 +4,12 @@ library(bslib)
 
 d = readr::read_csv(here::here("data/weather.csv"))
 
-d_vars = c("Average temp" = "temp_avg",
-           "Min temp" = "temp_min",
-           "Max temp" = "temp_max",
-           "Total precip" = "precip",
-           "Snow depth" = "snow",
-           "Wind direction" = "wind_direction",
-           "Wind speed" = "wind_speed",
-           "Air pressure" = "air_press")
+d_vars = c(
+  "Average temp" = "temp_avg",   "Min temp"       = "temp_min",
+  "Max temp"     = "temp_max",   "Total precip"   = "precip",
+  "Snow depth"   = "snow",       "Wind direction" = "wind_direction",
+  "Wind speed"   = "wind_speed", "Air pressure"   = "air_press"
+)
 
 ui = page_sidebar(
   theme = bs_theme(),
@@ -31,7 +29,7 @@ ui = page_sidebar(
   ),
   card(
     card_header(
-      textOutput("title"),
+      textOutput("title")
     ),
     card_body(
       plotOutput("plot")
@@ -93,9 +91,10 @@ server = function(input, output, session) {
   output$plot = renderPlot({
     d_city() |>
       ggplot(aes(x=date, y=.data[[input$var]])) +
-      geom_line() +
-      theme_minimal()
+      geom_line()
   })
 }
+
+thematic::thematic_shiny()
 
 shinyApp(ui = ui, server = server)

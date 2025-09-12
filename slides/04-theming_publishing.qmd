@@ -4,7 +4,7 @@ author: "Colin Rundel"
 format: 
   revealjs:
     logo: images/shiny.png
-    footer: "posit::conf 2024 - Introduction to Shiny for R"
+    footer: "posit::conf 2025 - Introduction to Shiny for R"
     slide-number: true
     highlight-style: a11y
     theme: [default, custom.scss]
@@ -12,31 +12,21 @@ format:
 execute:
   echo: true
 title-slide-attributes:
-    data-background-image: "images/Seattle_Skyline.jpg"
+    data-background-image: "images/Atlanta_Skyline.jpg"
     data-background-size: cover
     data-background-opacity: "0.33"
 ---
 
-# Q & A
-
 # Theming
 
-## bslib
+## Back to bslib
 
-As we mentioned earlier, the `bslib` package provides a modern UI toolkit for Shiny, R Markdown, and Quarto based on Bootstrap. It provides,
-
-* Custom theming of Shiny apps and R Markdown documents 
-
-* Switch between different versions of Bootstrap 
-
-* Modern UI components like cards, value boxes, sidebars, and more.
-
-We will now take a look at the first two of these features.
+We have been touching on bslib package all day today, and we'll now take a closer look at one final feature, using it to customize the theming of our Shiny apps using Bootstrap themes.
 
 
 ## Bootswatch
 
-Due to the ubiquity of Bootstrap a large amount of community effort has gone into developing custom themes - a large free collection of these are available at [bootswatch.com/](https://bootswatch.com/).
+Due to the ubiquity of Bootstrap, a large amount of community effort has already gone into developing custom themes. A large free collection of these are available at [bootswatch.com/](https://bootswatch.com/).
 
 <iframe data-src="https://bootswatch.com/" width="100%" height="450px" style="border:1px solid;border-radius: 5px;"  data-external="1">
 </iframe>
@@ -44,30 +34,33 @@ Due to the ubiquity of Bootstrap a large amount of community effort has gone int
 
 ## `bs_theme()`
 
-Provides a high level interface to adjusting the theme for an entire Shiny app,
+Provides a high level interface to adjusting the theme for an entire Shiny app, and is passed to the `theme` argument of of the page function of our UI (e.g. `page_sidebar()`, `fluidPage()`, etc.). 
 
-* Change bootstrap version via `version` argument
+`bs_theme()` allows allows us to construct a theme object by specifying:
 
-* Pick a bootswatch theme via `bootswatch` argument
+* a bootstrap version via `version` argument
 
-* Adjust basic color palette (`bg`, `fg`, `primary`, `secondary`, etc.)
+* a bootswatch theme via `preset` or `bootswatch` arguments
 
-* Adjust fonts (`base_font`, `code_font`, `heading_font`, `font_scale`)
+* basic color palette values (`bg`, `fg`, `primary`, `secondary`, etc.)
 
-* and more
+* fonts (`base_font`, `code_font`, `heading_font`, `font_scale`)
 
-The object returned by `bs_theme()` can be passed to the `theme` argument of `fluidPage()` and similar page UI functions.
+* and more ...
 
+::: {.aside}
+`bs_theme` objects can be modified after creation using `bs_theme_update()` to adjust any of the above parameters.
+:::
 
-## Demo 11 - Dynamic theming
+## Demo 10 - Dynamic theming
 
 ::: {.code-file .sourceCode .cell-code}
-`r fontawesome::fa("file")` `demos/demo11.R`
+`r fontawesome::fa("file")` `demos/demo10.R`
 :::
 ```{r}
 #| eval: false
-#| code-line-numbers: "|17|40"
-#| file: "../demos/demo11.R"
+#| code-line-numbers: "|15|38|64,70,76"
+#| file: "../demos/demo10.R"
 ```
 
 ## thematic
@@ -80,15 +73,15 @@ In the case of our Shiny app, to get dynamic theming of our plot as well as our 
 
 
 
-## Demo 12 - Full dynamic theming
+## Demo 11 - Full dynamic theming
 
 ::: {.code-file .sourceCode .cell-code}
-`r fontawesome::fa("file")` `demos/demo12.R`
+`r fontawesome::fa("file")` `demos/demo11.R`
 :::
 ```{r}
 #| eval: false
-#| code-line-numbers: "|96"
-#| file: "../demos/demo12.R"
+#| code-line-numbers: "|98"
+#| file: "../demos/demo11.R"
 ```
 
 
@@ -105,9 +98,11 @@ Using code provided in `exercises/ex06.R` (which is the same as `demo09`) experi
 
 * Based on the output in your console, update the `bs_theme()` call in the script to reflect the changes you made
 
+* *Suggestion* - making a good theme can be challenging, instead try making the ugliest possible app. This is a lot easier and more fun and just as instructive.
+
 ```{r}
 #| echo: false
-countdown::countdown(10)
+countdown::countdown(12)
 ```
 
 
@@ -141,7 +136,7 @@ For deployment generally apps will be organized as a single folder that contains
   
   * Relative paths should be to the root of the app folder
   
-* Static files (e.g. css, js, etc.) generally are placed in the `www/` subfolder
+* Static files (e.g. css, js, etc.) are generally placed in the `www/` subfolder
 
 * Your script *does not* need to be named `app.R` or `ui.R`/`server.R`
 
@@ -156,7 +151,7 @@ Now we will publish our app to shinyapps.io (you will need to have completed Exe
     - Make sure to copy the data (`weather.csv`) into this folder
     - and adjust any paths if necessary
   
-2. Open the script file in `exercises/ex08app` and click the Publish Document button in the upper right of the pane
+2. Open the script file in `exercises/ex07app` and click the Publish Document button in the upper right of the pane
 
     - You should be presented with the "Publish to server" dialog, click on the Add New Account link in the upper right
     
@@ -177,7 +172,7 @@ countdown::countdown(10)
 
 ## Demo 13 - shinylive
 
-One of the really exciting developments in the last couple of years is the ability to run R (and Python) inside a web browser using webasm. shinylive is a package that lets you bundle your shiny app as a static website that can be hosted anywhere you can host static html.
+One of the really exciting developments in the last couple of years is the ability to run R (and Python) inside a web browser using WebAssembly. shinylive is a package that lets you bundle your shiny app as a static website that can be hosted anywhere you can host static html.
 
 . . .
 
@@ -185,7 +180,7 @@ We can build a shinylive site using,
 
 ```{r}
 #| eval: false
-shinylive::export("demos/demo13","demos/demo13/site")
+shinylive::export("demos/demo12","demos/demo12/site")
 ```
 
 you can then run a local server with,
@@ -198,7 +193,7 @@ httpuv::runStaticServer("demos/demo13/site")
 or check out the version of the app that is running on GitHub pages as part of this workshop,
 
 ::: center
-<https://posit-conf-2024.github.io/shiny-r-intro/demos/demo13/site/>
+<https://posit-conf-2025.github.io/shiny-r-intro/demos/demo13/site/>
 :::
 
 
@@ -210,7 +205,7 @@ or check out the version of the app that is running on GitHub pages as part of t
   
 - Run a local instance of [shiny server](https://posit.co/products/open-source/shinyserver/)
 
-- Use shinyapps.io (public) or posit.cloud (within team)
+- Use shinyapps.io (public) or posit.cloud (within a team)
 
 - Use Posit Connect
 
@@ -351,8 +346,8 @@ See articles available at [shiny.rstudio.com/articles/#data](https://shiny.rstud
     <svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/></svg>
     </td>
     <td>
-    <a href="https://posit-conf-2024.github.io/shiny-r-intro/">
-    posit-conf-2024.github.io/shiny-r-intro/
+    <a href="https://posit-conf-2025.github.io/shiny-r/">
+    posit-conf-2025.github.io/shiny-r/
     </a>
     </td>
   </tr>
@@ -360,7 +355,7 @@ See articles available at [shiny.rstudio.com/articles/#data](https://shiny.rstud
     <td style="text-align:center">
     <svg aria-hidden="true" role="img" viewBox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M320 464c8.8 0 16-7.2 16-16V160H256c-17.7 0-32-14.3-32-32V48H64c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320zM0 64C0 28.7 28.7 0 64 0H229.5c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64z"/></svg>
     </td>
-    <td>[github.com/posit-conf-2024/shiny-r-intro/](https://github.com/posit-conf-2024/shiny-r-intro)</td>
+    <td>[github.com/posit-conf-2025/shiny-r/](https://github.com/posit-conf-2025/shiny-r)</td>
   </tr>
   <tr>
     <td style="text-align:center">
