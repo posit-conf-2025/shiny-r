@@ -2,6 +2,7 @@ library(dplyr)
 library(ggplot2)
 library(shiny)
 library(bslib)
+library(munsell)
 
 d = readr::read_csv(here::here("data/weather.csv"))
 

@@ -193,7 +193,7 @@ httpuv::runStaticServer("demos/demo13/site")
 or check out the version of the app that is running on GitHub pages as part of this workshop,
 
 ::: center
-<https://posit-conf-2025.github.io/shiny-r-intro/demos/demo13/site/>
+<https://posit-conf-2025.github.io/shiny-r/demos/demo13/site/>
 :::
 
 
