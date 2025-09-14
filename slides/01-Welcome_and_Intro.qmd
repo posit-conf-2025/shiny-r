@@ -28,15 +28,12 @@ library(shiny)
 
 ::: columns
 ::: {.column width="50%" .center}
-<br/>
-<br/>
-![](images/colin-rundel.png){width="50%"}
+![](images/colin-rundel.jpeg){width="50%"}
 :::
 
 
 ::: {.column width="50%" .center}
-FIXME
-![](){width="75%"}
+![](images/barret.jpeg){width="50%"}
 :::
 :::
 
@@ -52,7 +49,8 @@ FIXME
 ::: {.column width='10%'}
 :::
 ::: {.column width='40%'}
-| FIXME
+| Barret Schloerke
+| Posit, PBC
 :::
 ::::
 
@@ -77,12 +75,17 @@ countdown::countdown(3)
 ```
 
 
+
+
 ## Materials
 
-<br/><br/>
-
 :::: {.larger}
-`r bsicons::bs_icon("easel")` &nbsp; &nbsp; [pos.it/shiny-r-intro-24](https://pos.it/shiny-r-25)
+
+<br/>
+**Wifi**: Posit Conf 2025 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Password**: conf2025
+
+<br/>
+`r bsicons::bs_icon("easel")` &nbsp; &nbsp; [pos.it/shiny-r-conf25](https://pos.it/shiny-r-conf25)
 
 <br/>
 
@@ -111,49 +114,20 @@ All of the materials for this workshop licensed under a [Creative Commons Attrib
 | 15:30 - 17:00 | Theming & Publishing  |
 
 
-Coffee and tea will be available on levels FIXME. 
 
-Lunch will be in the FIXME
+## Housekeeping
 
+-   Gender-neutral bathrooms - Next to Chicago A (LL2)
+-   Meditation/prayer room - Chicago A (LL2)
+-   Mother's/lactation room - Chicago B (LL2)
+-   Red lanyards = No photos
+-   Code of Conduct - Please review carefully.
 
-## WiFi - FIXME
-
-<br/>
-
-::: larger
-Username: 
-
-::: center
-**Posit Conf 2025**
-:::
+    <https://posit.co/code-of-conduct>. 
+    
+    You can report Code of Conduct violations in person, by email, or by phone.
 
 
-Password: 
-
-::: center
-**conf2025**
-:::
-
-:::
-
-<br/>
-
-If you have any difficulty with your connection please let us know so we can escalate the issue(s) if needed.
-
-
-## Code of Conduct
-
-The Code of Conduct can be found at [posit.co/code-of-conduct](https://posit.co/code-of-conduct).
-
-Please review it carefully.
-
-You can report Code of Conduct violations in person, by email, or by phone.
-
-Please see the policy linked above for contact information.
-
-## Other useful info
-
-FIXME
 
 
 ## Asking for help (Stickies)
@@ -188,14 +162,14 @@ I'm done
 :::
 
 
-## Other communication (Discord)
+## Discord
 
-You should have received an email with an invitation and instructions for joining the conference's discord server.
+You should have received a welcome email that contained instructions for joining the conference's discord server.
 
-This workshop has a private channel under Workshops,
+This workshop has a channel under Workshops,
 
 ::: {.large style="text-align: center"}
-#workshop-shiny-r-intro
+#workshop-shiny-r
 :::
 
 This is a great place to ask questions, post resources, memes, or most anything else before, during, and after the workshop.
@@ -208,25 +182,13 @@ This is a great place to ask questions, post resources, memes, or most anything 
 
 You can use the following link to join the workshops RStudio cloud space,
 
-::: {.large .center}
+::: {.large .center width="50%"}
 [bit.ly/conf25-shiny-r](https://bit.ly/conf25-shiny-r)
 :::
 
-<p/>
-<p/>
+Once you have joined you can then select the `shiny-r` assignment, 
 
-Once you have joined you can then select the `get-started-shiny` assignment, 
-
-:::: {.columns}
-::: {.column width='10%'}
-
-:::
-
-::: {.column width='80%' .center}
-![](images/cloud_assignment.png)
-:::
-::::
-
+![](images/cloud_assignment.png){width="80%" fig-align="center"}
 
 which should then create a copy of all materials and launch a cloud session for you.
 
@@ -251,7 +213,7 @@ If everything is working you should see something similar to the following,
 * `exercises/solutions/` - sample solution code for each exercise 
 
 * `exercises/live/` - sample solution code we generate during the workshop, 
-updated at the end of each session
+updated at the end of each session. Update via `Git` > `Pull`.
 
 * `data/` - example data sets used in demos and exercises
 
@@ -289,7 +251,11 @@ is now the officially recommended way to build Shiny apps.
 
 We will be using both packages throughout the workshop, I'll try to point out when we are using features specific to one or the other.
 
-One of the easy ways to tell is that `bslib` functions use `snake_case` naming conventions while `shiny` uses `camelCase`.
+One of the easy ways to recognize what package is being used is that:
+
+* `bslib` functions use `snake_case`, and
+
+* `shiny` functions uses `camelCase`.
 
 
 
@@ -347,11 +313,19 @@ server = function(input, output, session) {}
 shinyApp(ui = ui, server = server)
 ```
 
+Every Shiny app has two main components:
+
+* A **UI** (user interface) which controls how the app looks
+
+* and a **server function** which controls how the app works.
+
+
+
 ## Weather data
 
 We need some data that we will be able to interact with for our Shiny apps today.
 
-I've provided recent weather data from [Meteostat](https://www.meteostat.net/) for airports around the US.
+I've collected some historical weather data from [Meteostat](https://www.meteostat.net/) for airports around the US.
 
 ```{r}
 #| include: false

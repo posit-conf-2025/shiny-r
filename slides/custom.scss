@@ -58,6 +58,10 @@ input#text {
   user-select: none;
 }
 
+.reveal .code-3_4 pre code {
+  max-height: 450px !important;
+}
+
 .reveal .code-halfish pre code {
   max-height: 300px !important;
 }
@@ -97,6 +101,10 @@ element.style {
 
 .reveal blockquote>p {
   margin-top: 0;
+}
+
+.reveal .xsmall {
+  font-size: 66%;
 }
 
 .reveal .small {
