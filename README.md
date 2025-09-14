@@ -1,7 +1,5 @@
 
----
-title: "posit::conf 2025 - Shiny for R Workshop"
----
+### posit::conf 2025
 
 Colin Rundel
 
