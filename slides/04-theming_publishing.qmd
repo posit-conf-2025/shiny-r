@@ -106,6 +106,43 @@ countdown::countdown(12)
 ```
 
 
+## brand.yml
+
+A recent addition to bslib (and quarto + other posit products) is the ability to define a common theme using a `brand.yml` file. This allows you to define a theme once and then use it across multiple apps or documents.
+
+* For shiny apps the `_brand.yml` file is brought in automatically via the `bslib` package if `bs_theme()` is used
+
+  * Behavior can be controlled via the `brand` argument
+
+## brand.yml compatibility {.scrollable}
+
+![](images/brand_yml.png){fig-align="center"}
+
+## Demo 12 - Shiny + brand.yml
+
+
+::: {.panel-tabset}
+
+### [`r fontawesome::fa("file")` `demos/demo12/_brand.yml`]{.xsmall}
+
+::: {.code-3_4}
+```{r}
+#| eval: false
+#| file: "../demos/demo12/_brand.yml"
+```
+:::
+
+### [`r fontawesome::fa("file")` `demos/demo12/demo12.R`]{.xsmall}
+
+::: {.code-3_4}
+```{r}
+#| eval: false
+#| code-line-numbers: "|15|44"
+#| file: "../demos/demo12/demo12.R"
+```
+:::
+
+:::
 
 # Deploying Shiny apps
 
@@ -180,7 +217,7 @@ We can build a shinylive site using,
 
 ```{r}
 #| eval: false
-shinylive::export("demos/demo12","demos/demo12/site")
+shinylive::export("demos/demo13","demos/demo13/site")
 ```
 
 you can then run a local server with,
@@ -195,6 +232,18 @@ or check out the version of the app that is running on GitHub pages as part of t
 ::: center
 <https://posit-conf-2025.github.io/shiny-r/demos/demo13/site/>
 :::
+
+## Some notes on shinylive
+
+* You may have noticed we slightly changed which packages we load at the beginning of the app,
+
+* Specifically we replaced `tidyverse` with `dplyr` and `ggplot2` - the reason for this is that each user of the shinylive app will need to download all the packages used in the app, so we want to keep this as minimal as possible.
+
+* We are also loading a package called `munsell` - this is a dependency of `ggplot2` that is not automatically included when you load `ggplot2` but is needed for the app to work.
+
+* I knew that I needed to add this because before adding it the app did not work (blank screen after loading)
+
+* To debug shinylive apps you need to use your browser's developer tools (F12 in most browsers) and check the javascript console for error messages.
 
 
 ## Other publishing options
