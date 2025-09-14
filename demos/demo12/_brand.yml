@@ -1,0 +1,73 @@
+meta:
+  name:
+    short: Duke
+    full: Duke University
+  link:
+    home: https://www.duke.edu
+    brand: https://brand.duke.edu
+
+logo:
+  images:
+    primary: logos/duke-primary-logo.png
+    reversed: logos/duke-primary-logo-reversed.png
+    shield: logos/duke-shield.png
+  small: logos/duke-shield.png
+  medium: primary
+  large: primary
+
+color:
+  palette:
+    duke-navy-blue: "#012169"     # Primary Duke Blue
+    duke-royal-blue: "#00539B"
+    copper: "#C84E00"
+    persimmon: "#E89923"
+    dandelion: "#FFD960"
+    piedmont: "#A1B70D"
+    eno: "#339898"
+    magnolia: "#1D6363"
+    prussian-blue: "#005587"
+    shale-blue: "#0577B1"
+    ironweed: "#993399"
+    hatteras: "#E2E6ED"
+    whisper-gray: "#F3F2F1"
+    ginger-beer: "#FCF7E5"
+    dogwood: "#988675"
+    shackleford: "#DAD0C6"
+    cast-iron: "#262626"
+    graphite: "#666666"
+    granite: "#B5B5B5"
+    limestone: "#E5E5E5"
+
+  foreground: cast-iron
+  background: white
+  primary: duke-navy-blue
+  secondary: duke-royal-blue
+  tertiary: persimmon
+  success: magnolia
+  info: eno
+  warning: dandelion
+  danger: copper
+  light: white
+  dark: cast-iron
+
+typography:
+  fonts:
+    - family: EB Garamond
+      source: google
+    - family: Open Sans
+      source: google
+    - family: Roboto
+      source: google
+    - family: Roboto Mono
+      source: google
+
+  base:
+    family: Open Sans
+  headings:
+    family: EB Garamond
+    color: primary
+  monospace:
+    family: Roboto Mono
+  navbar:
+    family: EB Garamond
+    color: primary
