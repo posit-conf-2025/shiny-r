@@ -1,5 +1,7 @@
 
-### posit::conf 2025
+---
+title: "posit::conf 2025 - Shiny for R Workshop"
+---
 
 Colin Rundel
 
@@ -9,15 +11,13 @@ Colin Rundel
 
 :alarm_clock:     09:00 - 17:00  
 
-:hotel:           TBD
-
 :writing_hand:    [pos.it/conf](http://pos.it/conf)
 
-:link:            [pos.it/shiny-r-24](http://pos.it/shiny-r-25)
+:link:            [pos.it/shiny-r-conf25](http://pos.it/shiny-r-conf25)
 
 <img class="emoji" title=":octocat:" alt=":octocat:" src="https://github.githubassets.com/images/icons/emoji/octocat.png" height="20" width="20" align="absmiddle">         [posit-conf-2024/shiny-r](https://github.com/posit-conf-2025/shiny-r)
 
-<img class="emoji" title=":discord:" alt=":discord:" src="slides/images/discord.png" height="20" width="20" align="absmiddle">         [#workshop-shiny-r]()
+<img class="emoji" title=":discord:" alt=":discord:" src="slides/images/discord.png" height="20" width="20" align="absmiddle"> #workshop-shiny-r
 -----
 
 ## Overview
