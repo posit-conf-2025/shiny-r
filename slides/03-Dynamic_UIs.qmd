@@ -58,7 +58,7 @@ library(bsicons)
 
 is a special UI input widget designed to launch a download window from your Shiny app. 
 
-`downloadButton()` is a special case of an `actionButton()` with specialized server syntax. These are different from the other inputs we've used this far as they are primarily used to trigger an action rather than return a value.
+`downloadButton()` is a special case of an `actionButton()` with specialized server syntax. These are different from the other inputs we've used so far, as they are primarily used to trigger an action rather than return a value.
 
 Rather than using an `observe()` or `render*()`, this widget is paired with the special `downloadHandler()` function which uses the latter's syntax in our server function.
 
@@ -72,11 +72,11 @@ Specifically, within our server definition we attach the `downloadHandler()` to 
 output$download_btn = downloadHandler(...)
 ```
 
-The handler then defines:
+The handler then defines two functions:
 
-* a `filename` function for generating a default filename and
+* `filename`, which is a function that generates a default filename
 
-*  a `content` function for writing the download file's content to a temporary file
+* `content`, which is a function that writes the file's content to a temporary location
 
 
 ## Demo 05 - A download button
@@ -93,11 +93,13 @@ The handler then defines:
 
 ## Controlling the reactive graph
 
-For both observers and reactive expressions Shiny will automatically determine reactive dependencies for you - in some cases this is not what we want.
+For both observers, reactives, and render functions Shiny will automatically determine reactive dependencies for you - in some cases this is not what we want.
 
-To explicitly control the dependencies of reactive expressions, render functions, and observers we can modify them using `bindEvent()` where the dependencies are explicitly listed
+To explicitly control the dependencies of these reactive expressions we can modify them using `bindEvent()` to definie the dependencies explicitly.
 
-Similar effects can be achieved via `observeEvent()` / `eventReactive()` but these have been soft deprecated as of Shiny 1.6.
+The first argument is the reactive expression to modify and the following is the inputs and reactives that should trigger it.
+
+Previously we had: `observeEvent()` / `eventReactive()` but these have been soft deprecated as of Shiny 1.6.
 
 ::: aside
 *Note* - when binding a reactive we use the functional form, i.e. `obj()` and not `obj`
@@ -106,9 +108,9 @@ Similar effects can be achieved via `observeEvent()` / `eventReactive()` but the
 
 ## Modal dialogs
 
-These are a popup window element that allow us to present important messages (e.g. warnings or errors) or other UI elements in a way that does not permanently clutter up the main UI of an app.
+These are a popup window element that allow us to present important messages or other UI elements in a way that does not permanently clutter up the main UI of an app.
 
-The modal dialog consists of a number of Shiny UI elements (static or dynamic) and only displays when it is triggered (usually by something like an action button or link).
+The modal dialog consists of a number of Shiny UI elements (static or dynamic) and only displays when it is triggered (usually by something like an action button or action link).
 
 They differ from other UI elements we've seen so far as they are usually defined within the app's server function and not the ui.
 
@@ -129,7 +131,9 @@ They differ from other UI elements we've seen so far as they are usually defined
 
 ## `fileInput()` widget
 
-This widget behaves a bit differently than the others we have seen - like the other widgets it returns a value via `input$<id>` but the value returned changes based on whether or not a file has been uploaded. Specifically, before the file is uploaded, the input will return `NULL`. After file(s) are uploaded the input returns a data frame with one row per file and the following columns:
+This widget behaves a bit differently than the others we have seen - like the other widgets it returns a value via `input$<id>` but the value returned changes based on whether or not a file has been uploaded. 
+
+Specifically, before the file is uploaded, the input will return `NULL`. After file(s) are uploaded the input returns a data frame with one row per file and the following columns:
 
 * `name` - the original filename (from the client's system)
 
@@ -152,7 +156,7 @@ library(bslib)
 
 ui = page_fluid(
   fileInput("upload", "Upload a file", accept = ".csv"),
-  h3("Result"),
+  h3("Result:"),
   tableOutput("result"),
   h3("Content:"),
   tableOutput("data")
@@ -172,7 +176,8 @@ server = function(input, output, session) {
       need(ext == "csv", "Please upload a csv file")
     )
     
-    readr::read_csv(input$upload$datapath)
+    readr::read_csv(input$upload$datapath) |>
+      head()
   })
 }
 
@@ -189,9 +194,7 @@ shinyApp(ui = ui, server = server)
 
 * `input$upload` will default to `NULL` when the app is loaded, using `req(input$upload)` for downstream consumers prevents errors/warnings until a file is uploaded
 
-* Files in `datapath` are temporary and should be treated as ephemeral 
-
-  * additional uploads can result in the previous files being deleted
+* Files in `datapath` are temporary and should be treated as ephemeral, additional uploads can result in previous files being deleted
 
 * `type` is at best a guess - validate uploaded files and write defensive code
 
@@ -201,9 +204,9 @@ shinyApp(ui = ui, server = server)
 
 ## Your turn - Exercise 05
 
-Starting with the code in `exercises/ex05.R` replace the preloading of the weather data (`d`) with a `reactive()` version that is populated via a `fileInput()` widget. 
+Starting with the code in `exercises/ex05.R` replace the preloading of the weather data, `d`, with a `reactive()` version that is populated via a `fileInput()` widget. 
 
-You should then be able to get the same app behavior as before once `data/weather.csv` is uploaded. You can also check that your app works with the `data/portland.csv` dataset as well.
+You should then be able to get the same app behavior as before once `data/weather.csv` is uploaded. You can also check that your app works with the smaller `data/atl_weather.csv` dataset as well.
 
 *Hint* - remember that anywhere that uses either `d` will now need to use `d()` instead.
 
@@ -223,24 +226,26 @@ Knowing the specifics of html (and Bootstrap specifically) are not needed for wo
 
 This is not the only place that Bootstrap shows up in the R ecosystem - both RMarkdown and Quarto html documents use Bootstrap for styling as well.
 
-## bslib
+## bslib components
 
-The bslib R package provides a modern UI toolkit for Shiny, R Markdown, and Quarto based on Bootstrap. 
+One of the other features of the bslib package is that it also provides a number of modern UI components that you can use to enhance the look and feel of your Shiny apps.
 
-It provides,
+Some of these components include:
 
-* Custom theming of Shiny apps and R Markdown documents 
+* Cards
 
-* Switch between different versions of Bootstrap 
+* Value boxes
 
-* Modern UI components like cards, value boxes, sidebars, and more.
+* Sidebars
 
-This last set of features is what we will focus on now, with more on the first two after the break.
+* Popovers & Tooltips
+
+These components all come from Bootstrap and are designed to be modular and flexible so that you can use them in a variety of ways.
 
 
 ## Cards
 
-Cards are a UI element that you will recognize from many modern websites. They are rectangular containers with borders and padding that are used to group related information. When utilized properly to group related information, they help users better digest, engage, and navigate through content
+Cards are a UI element that you will recognize from many modern websites. They are rectangular containers with borders and padding that are used to group related information. When utilized properly to group elements they help users better digest, engage, and navigate through content
 
 ```{bslib}
 #| output-location: column
@@ -345,7 +350,7 @@ value_box(
 :::
 ```{r}
 #| eval: false
-#| code-line-numbers: "|17-40|17,19|32-39|54-56"
+#| code-line-numbers: "|14-37|29-36|51-53"
 #| file: ../demos/demo07.R
 ```
 
@@ -378,7 +383,7 @@ Any one see a potential issue with this?
 
 . . .
 
-Each value box shows a dynamic value that is calculated from the data - so we need a `textOutput()` and corresponding `renderText()` for each value box, and even more if we want to change the color or icon based on the value.
+Each value box shows a dynamic value that is calculated from the data - so we need a `textOutput()` and corresponding `renderText()` for each value box, and will need even more if we want to change the color or icon based on the value.
 
 
 
@@ -386,9 +391,9 @@ Each value box shows a dynamic value that is calculated from the data - so we ne
 
 To handle situations like this Shiny provides the ability to dynamically generate UI elements entirely within the server function.
 
-For our case we can create all of the value boxes we need in a single `renderUI()` call making our code simpler and more maintainable.
+For our case we can create all of the value boxes in a single `renderUI()` call making our code simpler and more maintainable.
 
-Additionally, since `renderUI()` is a reactive context we can perform all of our calculations in the same place .
+Additionally, since `renderUI()` is a reactive context we can perform all of our calculations in the same place at the same time.
 
 
 ## Demo 08 - Value boxes
