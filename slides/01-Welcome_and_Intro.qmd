@@ -323,9 +323,7 @@ Every Shiny app has two main components:
 
 ## Weather data
 
-We need some data that we will be able to interact with for our Shiny apps today.
-
-I've collected some historical weather data from [Meteostat](https://www.meteostat.net/) for airports around the US.
+We need some data that we will be able to interact with for our Shiny apps today. We've collected weather data from [Meteostat](https://www.meteostat.net/) for several airports around the US.
 
 ```{r}
 #| include: false
@@ -339,7 +337,7 @@ readr::read_csv(here::here("data/weather.csv"))
 
 
 ::: aside
-See [here](https://posit-conf-2025.github.io/shiny-r-intro/data/) for a full data dictionary and the [source code](https://github.com/posit-conf-2025/shiny-r-intro/blob/main/data/raw_weather.R) for collecting these data.
+See [here](https://posit-conf-2025.github.io/shiny-r/data/) for a full data dictionary and the [source code](https://github.com/posit-conf-2025/shiny-r/blob/main/data/raw_weather.R) for collecting these data.
 :::
 
 
@@ -358,13 +356,15 @@ See [here](https://posit-conf-2025.github.io/shiny-r-intro/data/) for a full dat
 
 ## Your turn - Exercise 01
 
-Open `exercises/ex01.R` in Posit cloud and execute it via the Run App button in RStudio.
+Open `exercises/ex01.R` in Posit cloud and execute it via the Run App button.
 
-Check that you are able successfully run the Shiny app and are able to interact with it by picking a new airport. 
+Check that you are able to successfully run the Shiny app and are able to interact with it by picking a new airport. 
 
-* If everything is working try modifying the code, e.g. try adding or removing a city from `radioButtons()`.
+If everything is working try modifying the code,
 
-* What happens if you add a city that is not in the `weather.csv` dataset to the radio button input?
+  * Try adding or removing a city from `radioButtons()`
+
+  * Check what happens if you add a city that is *not* in  `weather.csv`
 
 
 ::: {.aside}
@@ -408,9 +408,9 @@ This sidebar layout is a good place to start for most simple apps, but there are
 
 Since `page_sidebar()` uses snake_case we can infer it is from `bslib`. If you've seen older Shiny code you may have seen `fluidPage()` + `sidebarLayout()` which come from `shiny`.
 
-There are direct analogues of almost all Shiny page layouts in bslib, either choice is viable and will let you create a working Shiny app.
+There are analogues of almost all of Shiny's original page layouts in bslib, either choice is viable and will let you create a working Shiny app.
 
-We have opted to use the bslib layouts because they are more modern and typically have a more user friendly syntax.
+We have opted to use the bslib layouts because they are more modern and typically have a more user friendly (less nested) syntax.
 
 ::: aside
 When googling or using an LLM you are likely to find examples using both layout styles so it is good to be familiar with both.
@@ -421,7 +421,7 @@ When googling or using an LLM you are likely to find examples using both layout 
 
 One of the neat tricks of Shiny is that the interface is just a webpage, and this can be seen by the fact that UI functions are just R functions that generate HTML. 
 
-We can run any of the following in our console and see the HTML output generated:
+We can run any of the following in our console and see the underlying HTML of each element.
 
 ```{r eval=FALSE}
 actionButton("id", "Click me!")
