@@ -88,6 +88,7 @@ In the case of our Shiny app, to get dynamic theming of our plot as well as our 
 
 ## Your turn - Exercise 06
 
+::: {.medium}
 Using code provided in `exercises/ex06.R` (which is the same as `demo09`) experiment with bslib's themer tool to explore different themes .
 
 * Try changing the main theme as well as the foreground and background colors
@@ -99,6 +100,7 @@ Using code provided in `exercises/ex06.R` (which is the same as `demo09`) experi
 * Based on the output in your console, update the `bs_theme()` call in the script to reflect the changes you made
 
 * *Suggestion* - making a good theme can be challenging, instead try making the ugliest possible app. This is a lot easier and more fun and just as instructive.
+:::
 
 ```{r}
 #| echo: false
@@ -108,7 +110,7 @@ countdown::countdown(12)
 
 ## brand.yml
 
-A recent addition to bslib (and quarto + other posit products) is the ability to define a common theme using a `brand.yml` file. This allows you to define a theme once and then use it across multiple apps or documents.
+A recent addition to bslib (and quarto + other Posit products) is the ability to define a common theme elements using a `brand.yml` file. This allows you to define a theme once and then use it across multiple apps or documents.
 
 * For shiny apps the `_brand.yml` file is brought in automatically via the `bslib` package if `bs_theme()` is used
 
@@ -144,17 +146,9 @@ A recent addition to bslib (and quarto + other posit products) is the ability to
 
 :::
 
-## Want to learn more about brand.yml?
-
-Theming Made Easy:
-Introducing brand.yml for Shiny
-
-Garrick Aden-Buie
-
-@ The Power of Presentation in Regency VII
-Thursday, Sep 18 10:20 AM - 11:40 AM EDT
-
-
+::: {.aside}
+Fonts, colors, and logos are based on Duke's [Brand Guide](https://brand.duke.edu/)
+:::
 
 # Deploying Shiny apps
 
