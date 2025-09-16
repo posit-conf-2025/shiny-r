@@ -364,80 +364,14 @@ See the various winners in the following blog posts:
 * [4th contest winners](https://posit.co/blog/winners-of-the-2024-shiny-contest/)
 
 
-
-
-## shinyjs
+## Shiny Assistant
 
 ::: {.large style="text-align: center"}
-[daattali/shinyjs](https://github.com/daattali/shinyjs)
+[gallery.shinyapps.io/assistant/](https://gallery.shinyapps.io/assistant/)
 :::
 
-> Easily improve the user experience of your Shiny apps in seconds
 
-* Hide (or show) an element 
-
-* Disable (or enable) an input 
-
-* Reset an input back to its original value 
-
-* Delay code execution
-
-* Easily call your own JavaScript functions from R 
-
-
-## DT
-
-::: {.large style="text-align: center"}
-[rstudio.github.io/DT/](https://rstudio.github.io/DT/)
-:::
-
-> The R package DT provides an R interface to the JavaScript library DataTables. R data objects (matrices or data frames) can be displayed as tables on HTML pages, and DataTables provides filtering, pagination, sorting, and many other features in the tables.
-
-* Interactive tables
-
-* Tables as inputs
-
-* Editable tables
-
-
-## reactable
-
-::: {.large style="text-align: center"}
-[glin.github.io/reactable/](https://glin.github.io/reactable/)
-:::
-
-> Interactive data tables for R, based on the [React Table](https://github.com/tanstack/table/tree/v7) library and made with [reactR](https://github.com/react-R/reactR).
-
-* Sorting, filtering, pagination
-* Grouping and aggregation
-* Built-in column formatting
-* Custom rendering via R or JavaScript
-* Expandable rows and nested tables
-* Conditional styling
-
-
-## htmlwidgets
-
-::: {.large style="text-align: center"}
-[htmlwidgets.org](https://www.htmlwidgets.org/)
-:::
-
-> The htmlwidgets package provides a framework for easily creating R bindings to JavaScript libraries. Widgets created using the framework can be:
->
-> * Used at the R console for data analysis just like conventional R plots (via RStudio Viewer).
-> * Seamlessly embedded within R Markdown documents and Shiny web applications.
-> * Saved as standalone web pages for ad-hoc sharing via email, Dropbox, etc.
-
-
-## pool
-
-::: {.large style="text-align: center"}
-[rstudio.github.io/pool/](https://rstudio.github.io/pool/)
-:::
-
-> The goal of the pool package is to abstract away the logic of connection management and the performance cost of fetching a new connection from a remote database. These concerns are especially prominent in interactive contexts, like Shiny apps (which connect to a remote database) or even at the R console.
-
-See articles available at [shiny.rstudio.com/articles/#data](https://shiny.rstudio.com/articles/#data)
+Shinylive + a LLM (with Shiny specific context) that can help you start developing a Shiny app. Also super easy to share with others.
 
 
 ## Awesome Shiny Extensions
