@@ -267,18 +267,14 @@ or check out the version of the app that is running on GitHub pages as part of t
 
 # What next / what else
 
-## posit::conf 2025
+## posit::conf 2025 - Shiny related sessions
 
 ::: {.panel-tabset .small}
 
-### Wednesday
+### Shiny for Humans
 
-::: {.columns .large}
-
-::: {.column}
-#### Shiny for Humans
-
-10:20 AM - 11:40 AM EDT Regency VII
+::: {.large}
+Wednesday, 10:20 AM - 11:40 AM EDT Regency VII
 
 * Modular, layout-as-code approach for customizable Shiny dashboards
 * shinyGovStyle - accessible government design in RShiny
@@ -286,10 +282,22 @@ or check out the version of the app that is running on GitHub pages as part of t
 * Design of Everyday Shiny Apps
 :::
 
-::: {.column}
-#### Shiny New Tricks
+### Pedagogy as Software
 
-1:00 PM - 2:20 PM EDT Regency VII
+::: {.large}
+Wednesday, 10:20 AM - 11:40 AM EDT Regency V
+
+* Teaching data visualization with R entirely in Quarto
+* ChalkTalk: Globalizing Data Science Education with AI-generated Videos
+* Empowering Learners with WebR, Pyodide, and Quarto
+* Leveraging LLMs for student feedback in introductory data science courses
+:::
+
+
+### Shiny New Tricks
+
+::: {.large}
+Wednesday, 1:00 PM - 2:20 PM EDT Regency VII
 
 * Old Apps, New Tricks: How AI can write Automated Tests for your Shiny Apps
 * Web applications with Shiny and React (and AI)
@@ -297,27 +305,16 @@ or check out the version of the app that is running on GitHub pages as part of t
 * shinystate: Launching collaboration and session management to new heights in Shiny applications
 :::
 
-:::
 
+### The Power of Presentation
 
-### Thursday
-
-::: {.columns .large}
-
-::: {.column}
-#### The Power of Presentation
-
-10:20 AM - 11:40 AM EDT Regency VII
+::: {.large}
+Thursday, 10:20 AM - 11:40 AM EDT Regency VII
 
 * Disposable Shiny Apps
 * Quarto for Business Collaboration and Technical Documentation in Word docx format
 * Talk data to me: How to present youR data to any audience
 * Theming Made Easy: Introducing brand.yml
-:::
-
-::: {.column}
-:::
-
 :::
 
 :::
