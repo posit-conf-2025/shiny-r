@@ -102,3 +102,7 @@ d = map_dfr(
 
 write_csv(d, here::here("data/weather.csv"))
 write_rds(d, here::here("data/weather.rds"))
+
+d |>
+  filter(airport_code == "KATL") |>
+  write_csv(here::here("data/atl_weather.csv"))
