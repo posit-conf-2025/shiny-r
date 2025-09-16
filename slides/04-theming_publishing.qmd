@@ -273,6 +273,73 @@ or check out the version of the app that is running on GitHub pages as part of t
 
 # What next / what else
 
+## posit::conf 2025
+
+::: {.panel-tabset .small}
+
+### Wednesday
+
+::: {.columns .large}
+
+::: {.column}
+#### Shiny for Humans
+
+10:20 AM - 11:40 AM EDT Regency VII
+
+* Modular, layout-as-code approach for customizable Shiny dashboards
+* shinyGovStyle - accessible government design in RShiny
+* Death by Dropdown? Engineer Insightful Shiny Apps with Behavioral Science
+* Design of Everyday Shiny Apps
+:::
+
+::: {.column}
+#### Shiny New Tricks
+
+1:00 PM - 2:20 PM EDT Regency VII
+
+* Old Apps, New Tricks: How AI can write Automated Tests for your Shiny Apps
+* Web applications with Shiny and React (and AI)
+* Observability at scale: Monitoring Shiny Applications with OpenTelemetry
+* shinystate: Launching collaboration and session management to new heights in Shiny applications
+:::
+
+:::
+
+
+### Thursday
+
+::: {.columns .large}
+
+::: {.column}
+#### The Power of Presentation
+
+10:20 AM - 11:40 AM EDT Regency VII
+
+* Disposable Shiny Apps
+* Quarto for Business Collaboration and Technical Documentation in Word docx format
+* Talk data to me: How to present youR data to any audience
+* Theming Made Easy: Introducing brand.yml
+:::
+
+::: {.column}
+:::
+
+:::
+
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Mastering Shiny
 
 ![](images/mastering_shiny.png){fig-align="center" width="40%"}
@@ -290,7 +357,9 @@ or check out the version of the app that is running on GitHub pages as part of t
 
 > The Shiny User Showcase is comprised of contributions from the Shiny app developer community. The apps are categorized into application areas and presented with a brief description, tags, and for many, the source code. Note that many of these apps are winners and honorable mentions of our annual Shiny contest!
 
-Shiny contest winners blog posts:
+## Shiny contest
+
+See the various winners in the following blog posts:
 
 * [1st contest winners](https://www.rstudio.com/blog/first-shiny-contest-winners/)
 
@@ -298,7 +367,7 @@ Shiny contest winners blog posts:
 
 * [3rd contest winners](https://www.rstudio.com/blog/winners-of-the-3rd-annual-shiny-contest/)
 
-* 4th contest is ongoing - deadline for submission is Sunday September 15th
+* [4th contest winners](https://posit.co/blog/winners-of-the-2024-shiny-contest/)
 
 
 
@@ -306,7 +375,7 @@ Shiny contest winners blog posts:
 ## shinyjs
 
 ::: {.large style="text-align: center"}
-[deanattali.com/shinyjs/](https://deanattali.com/shinyjs/)
+[daattali/shinyjs](https://github.com/daattali/shinyjs)
 :::
 
 > Easily improve the user experience of your Shiny apps in seconds
