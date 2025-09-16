@@ -17,14 +17,22 @@ title-slide-attributes:
     data-background-opacity: "0.33"
 ---
 
+```{r setup}
+#| include: false
+library(shiny)
+```
+
 # Basic Reactivity
 
 ## Reactive elements
 
+::: {.columns}
+::: {.column width="55%"}
+
 ::: {.code-file .sourceCode .cell-code}
 `r fontawesome::fa("file")` `demos/demo01.R`
 :::
-::: {.code-half}
+::: {.code-3_4}
 ```{r}
 #| eval: false
 #| code-line-numbers: "|10-20|11|22"
@@ -32,10 +40,11 @@ title-slide-attributes:
 ```
 :::
 
+:::
+::: {.column width="45%"}
+<br/><br/>
+![](images/diag-1.png){fig-align="center" width="80%"}
 
-::: {style="width:100%; height: 30%; text-align: center;"}
-::: {style="width:50%; display: inline-block; text-align: center;"}
-![](images/diag-1.png){fig-align="center" width="75%"}
 :::
 :::
 
@@ -44,10 +53,13 @@ Our *inputs* and *outputs* are defined by the elements in our `ui`.
 
 ## Reactive graph
 
+::: {.columns}
+::: {.column width="55%"}
+
 ::: {.code-file .sourceCode .cell-code}
 `r fontawesome::fa("file")` `demos/demo01.R`
 :::
-::: {.code-half}
+::: {.code-3_4}
 ```{r}
 #| eval: false
 #| code-line-numbers: "|26-31|26,28"
@@ -55,12 +67,13 @@ Our *inputs* and *outputs* are defined by the elements in our `ui`.
 ```
 :::
 
+:::
+::: {.column width="45%"}
+<br/><br/>
+![](images/diag-2.png){fig-align="center" width="80%"}
+:::
+:::
 
-::: {style="width:100%; height: 30%; text-align: center;"}
-::: {style="width:50%; display: inline-block; text-align: center;"}
-![](images/diag-2.png){fig-align="center" width="75%"}
-:::
-:::
 
 The *reactive logic* is defined in our `server` function - `shiny` takes care of figuring out what depends on what.
 
@@ -78,11 +91,11 @@ The *reactive logic* is defined in our `server` function - `shiny` takes care of
 
 ## `.data` pronoun
 
-One aspect of the improved code that you might not be familiar with is the use of `.data[[input$var]]` within  `renderPlot()`. 
+One aspect of the updated code that you might not be familiar with is the use of `.data[[input$var]]` within  `renderPlot()`. 
 
 This is a useful feature from `rlang` that can be used across much of the tidyverse to reference columns in a data frame using a variable. 
 
-It helps avoid some of the complexity around "non-standard evaluation" (e.g. `{{`, `!!`, `enquo()`, etc.) when working with functions built with tidyeval (e.g. `dplyr` and `ggplot2`).
+This helps avoid some of the complexity around "non-standard evaluation" (e.g. `{{`, `!!`, `enquo()`, etc.) when working with functions built with tidyeval (e.g. `dplyr` and `ggplot2`).
 
 
 ::: aside
@@ -92,7 +105,7 @@ For more details see the rlang [.data and .env pronouns](https://rlang.r-lib.org
 
 ## Reactive graph
 
-With these additions, what should our reactive graph look like now?
+With these additions, what does our reactive graph look like now?
 
 . . .
 
@@ -105,9 +118,9 @@ With these additions, what should our reactive graph look like now?
 
 ## Your turn - Exercise 03
 
-Starting with the code  in `exercises/ex03.R` (based on `demo02.R`'s code) add a `tableOutput()` with the id `minmax` to the app's `mainPanel()`.
+Starting with the code  in `exercises/ex03.R` (based on `demo02.R`'s code) add a `tableOutput()` with the id `minmax` to the app's body.
 
-Once you have done that you should then add logic to the `server` function to render a table that shows the min and max *average temperature* for each year contained in these data.
+Once you have done that, you should then add logic to the `server` function to render the table so that it shows the min and max *average temperature* for each year contained in the data.
 
 - You will need to add an appropriate output in the `ui` 
 - and a corresponding reactive expression in the `server` function to generate these summaries.
@@ -135,7 +148,7 @@ countdown::countdown(12)
 Another (more detailed) way of seeing the reactive graph (dynamically) for your app is using the `reactlog` package.
 
 
-Run the following to log and show all of the reactive events occuring within `ex03_soln.R`, 
+We can run the following to log and show all of the reactive events occuring within `ex03_soln.R`, 
 
 <br/>
 
@@ -151,21 +164,31 @@ shiny::reactlogShow()
 
 ## DRY (Don't repeat yourself)
 
-Some of you may have noticed that in `ex03_soln.R` we have a tiny bit of repeated code - specifically the filtering of `d` to get the data for the selected airport. 
+::: {.columns}
+::: {.column}
+Some of you may have noticed that in `ex03_soln.R` we have a bit of repeated code - specifically the filtering of `d` to subset the data for the selected airport. 
 
 While this is not a big deal here, it can become problematic in more complex apps.
-
+:::
+::: {.column .small}
 
 ::: {.code-file .sourceCode .cell-code}
 `r fontawesome::fa("file")` `exercises/solutions/ex03_soln.R`
 :::
-::: {.code-halfish}
+::: {.code}
 ```{r}
 #| eval: false
 #| code-line-numbers: "|38-39,46-47"
 #| file: ../exercises/solutions/ex03_soln.R
 ```
 :::
+
+:::
+:::
+
+
+
+
 
 
 ## Demo 03 - Enter `reactive()`
@@ -198,12 +221,17 @@ Their primary use is similar to a function in an R script, they help to
 
 ## `reactive()` tips
 
-- Expressions are written in the same way as `render*()` functions
+- Expressions are written in the same way as `render*()` functions but they do not have the `output$` prefix.
+
+```r
+react_obj = reactive({
+  ...
+})
+```
 
 . . .
 
-- If `react_obj = reactive({...})` then any consumer 
-  must access value using `react_obj()` and *not* `react_obj`
+- Any consumer of `react_obj` must access its value using `react_obj()` and *not* `react_obj`
     - think of `react_obj` as a function that returns the current value
     - Common cause of ~~everyone's~~ my favorite R error ,
       
@@ -213,7 +241,7 @@ Their primary use is similar to a function in an R script, they help to
 
 . . .
 
-- Like `input` reactive expressions may only be used within reactive contexts (e.g. `render*()`, `reactive()`, `observer()`, etc.)
+- Like `input` reactive expressions may only be used within reactive contexts 
   
   ```
   ## Error: Operation not allowed without an active reactive context. (You tried to do something that can only be done from inside a reactive expression or observer.)
@@ -255,7 +283,7 @@ flowchart LR
 
 These are the final reactive expression we will be discussing today. They are constructed in the same way as a `reactive()` however an observer does not return a value, instead they are used for their *side effects*.
 
-* The side effects in most cases involve sending data to the client browser, e.g. updating a UI element
+* A side effects in most cases involve sending data to the client browser, e.g. updating a UI element
 
 * While not obvious given their syntax - the results of the `render*()` functions are observers.
 
@@ -311,9 +339,52 @@ You may have noticed that the App initializes with "West" selected for `region` 
 
 . . .
 
-This is a common occurrence with Shiny, particularly at initialization or when a user enters bad / unexpected input(s).
+This is a common occurrence with Shiny, particularly at initialization or when a user enters partial / bad input(s).
 
 A good way to protect against this is to validate inputs before using them - the simplest way is to use `req()` which checks if a value is [truthy](https://shiny.rstudio.com/reference/shiny/latest/isTruthy.html) and prevent further execution if not.
+
+## Truthiness in Shiny
+
+In Shiny, "truthiness" determines whether a value should be considered valid for reactive execution.
+
+<p/>
+
+::: {.columns .small}
+::: {.column width="40%"}
+A value is considered **truthy** if it is:
+
+* Not `NULL`
+* Not `FALSE`
+* Not an empty vector (`character(0)`, `numeric(0)`, etc.)
+* Not an empty string `""`
+* Not `NA`
+:::
+
+::: {.column width="30%" .fragment}
+
+<p/>
+
+```{r}
+isTruthy(TRUE)
+isTruthy(1)
+isTruthy("hello")
+isTruthy(c(1, 2, 3))
+```
+:::
+
+::: {.column width="30%" .fragment}
+
+<p/>
+
+```{r}
+isTruthy(NULL)
+isTruthy(FALSE)
+isTruthy("")
+isTruthy(character(0))
+isTruthy(NA)
+```
+:::
+:::
 
 
 ## Your turn - Exercise 04
@@ -336,7 +407,7 @@ countdown::countdown(10)
 
 Reactive graphs are meant to be acyclic, that is they should not have circular dependencies. 
 
-The use of observers can introduce cycles which can then lead to infinite loops, see the following example:
+The use of observers can introduce cycles (accidently) which can then lead to infinite loops, see the following example:
 
 ```{r}
 #| eval: false
