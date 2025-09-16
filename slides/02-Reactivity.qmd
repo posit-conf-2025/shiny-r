@@ -255,7 +255,7 @@ flowchart LR
 
 These are the final reactive expression we will be discussing today. They are constructed in the same way as a `reactive()` however an observer does not return a value, instead they are used for their *side effects*.
 
-* The side effects in most cases involve sending data to the client broswer, e.g. updating a UI element
+* The side effects in most cases involve sending data to the client browser, e.g. updating a UI element
 
 * While not obvious given their syntax - the results of the `render*()` functions are observers.
 
@@ -295,7 +295,7 @@ These are the final reactive expression we will be discussing today. They are co
 
 ## Using `req()`
 
-You may have notices that the App initializes with "West" selected for `region` but no initial selection for `name` because of this we have some warnings generated in the console:
+You may have noticed that the App initializes with "West" selected for `region` but no initial selection for `name` because of this we have some warnings generated in the console:
 
 ```{r}
 #| eval: false
@@ -318,7 +318,7 @@ A good way to protect against this is to validate inputs before using them - the
 
 ## Your turn - Exercise 04
 
-Using the code provided in `exercise/ex04.R` (based on `demo/demo04.R`) as a starting point add the calls to `req()` necessary to avoid the initialization warnings. 
+Using the code provided in `exercises/ex04.R` (based on `demos/demo04.R`) as a starting point add the calls to `req()` necessary to avoid the initialization warnings. 
 
 Also, think about if there are any other locations in our app where `req()` might be useful.
 

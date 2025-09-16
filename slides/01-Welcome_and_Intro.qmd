@@ -58,7 +58,7 @@ library(shiny)
 
 ## Introduce yourself
 
-We wont go around the room, but take the next couple of minutes to introduce yourself to your neighbors.
+We won't go around the room, but take the next couple of minutes to introduce yourself to your neighbors.
 
 Some suggested topics:
 
@@ -89,7 +89,7 @@ countdown::countdown(3)
 
 <br/>
 
-`r bsicons::bs_icon("github")` &nbsp; &nbsp; [github.com/posit-conf-2025/shiny-r-intro](https://github.com/posit-conf-2025/shiny-r)
+`r bsicons::bs_icon("github")` &nbsp; &nbsp; [github.com/posit-conf-2025/shiny-r](https://github.com/posit-conf-2025/shiny-r)
 
 ::::
 
@@ -413,7 +413,7 @@ There are direct analogues of almost all Shiny page layouts in bslib, either cho
 We have opted to use the bslib layouts because they are more modern and typically have a more user friendly syntax.
 
 ::: aside
-When googling or using an llm you are likely to find examples using both layout styles so it is good to be familiar with both.
+When googling or using an LLM you are likely to find examples using both layout styles so it is good to be familiar with both.
 :::
 
 
