@@ -144,6 +144,18 @@ A recent addition to bslib (and quarto + other posit products) is the ability to
 
 :::
 
+## Want to learn more about brand.yml?
+
+Theming Made Easy:
+Introducing brand.yml for Shiny
+
+Garrick Aden-Buie
+
+@ The Power of Presentation in Regency VII
+Thursday, Sep 18 10:20 AM - 11:40 AM EDT
+
+
+
 # Deploying Shiny apps
 
 ## Your turn - Exercise 07 - Part 1

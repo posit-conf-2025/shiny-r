@@ -71,3 +71,9 @@ typography:
   navbar:
     family: EB Garamond
     color: primary
+
+defaults:
+  bootstrap:
+    defaults:
+      navbar-bg: $brand-duke-royal-blue
+      sidebar-bg: $brand-duke-navy-blue
